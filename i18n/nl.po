@@ -1,0 +1,26 @@
+#. module: DrAnytime_invoice_interest
+#: model:mail.template,subject:DrAnytime_invoice_interest.email_invoice_reminder
+msgid "Rappel: Facture n° ${object.number or 'n/a'}"
+msgstr "Herinnering: Factuur n°  ${object.number or 'n/a'}"
+
+
+#. module: DrAnytime_invoice_interest
+#: model:mail.template,body_html:DrAnytime_invoice_interest.email_invoice_reminder
+msgid ""
+msgstr ""
+"<?xml version=\"1.0\"?>\n <data>"
+"<div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34)"><p style="margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Beste,</p></div><div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34)"><p style="margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">"
+
+
+
+
+"Als bijlage vindt u de herinneringsfactuur. Mogen wij u vragen deze betaling dringend in orde te maken?"
+ "<br/>"
+"Indien deze herinnering uw betaling kruist gelieve ons dan te verontschuldigen."
+ "<br/>"
+"Met vriendelijke groeten,"
+
+
+
+"</p><div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;"><p style="margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">&nbsp;</p></div><div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;"><p style="margin:0px 0px 9px 0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Doctoranytime</p></div></div>"
+"</data>"

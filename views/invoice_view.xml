@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="interest_view_payment_term_form_inherit" model="ir.ui.view">
+            <field name="name">account.payment.term.form.interest</field>
+            <field name="model">account.payment.term</field>
+            <field name="inherit_id" ref="account.view_payment_term_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[1]" position="after">
+                    <group>
+                        <field name="annual_interest" groups="account.group_account_manager"/>
+                        <field name="second_interest" groups="account.group_account_manager"/>
+                        <field name="amount_limit_second_interest" groups="account.group_account_manager"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="interest_account_invoice_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.form.interest</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="number_days" groups="base.group_no_one" readonly="1"/>
+                    <field name="annual_interest" invisible="1"/>
+                    <field name="amount_limit_second_interest" invisible="1"/>
+                    <field name="second_interest" invisible="1"/>
+                    <field name="total_interest"/>
+
+                </xpath>
+            </field>
+        </record>
+        <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='total']/div/table/tr[last()]" position="before">
+                <t t-if="o.total_interest">
+                <tr class="border-black">
+                    <td>
+                        <strong>Total Interest</strong>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="o.total_interest"
+                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                    </td>
+                </tr>
+                </t>
+            </xpath>
+        </template>
+
+<record id="email_invoice_reminder" model="mail.template">
+            <field name="name">Invoicing: First Reminder Invoice email</field>
+            <field name="email_from">
+                ${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}
+            </field>
+            <field name="subject">Rappel: Facture n° ${object.number or 'n/a'}</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="model_id" ref="account.model_account_invoice"/>
+            <field name="auto_delete" eval="False"/>
+            <field name="report_template" ref="account.account_invoices"/>
+            <field name="report_name">
+                Invoice_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}
+            </field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html" type="html">
+
+
+                <div style="color: rgb(34, 34, 34)">
+                    <p>Bonjour,</p>
+                    <p>
+                        <br/>
+                    </p>
+                </div>
+                <div style="color: rgb(34, 34, 34)">
+                    <p>Sauf erreur ou omission de notre part, le paiement de la facture ne nous est pas parvenu. Nous
+                        vous serions reconnaissant de bien vouloir régler cette dernière dans les plus brefs délais. Si
+                        le paiement de cette facture a déjà été effectué, nous vous prions de ne pas tenir compte de ce
+                        rappel. En cas de question, veuillez prendre contact avec votre Account Manager.
+                    </p>
+                    <p>
+                        <br/>
+                    </p>
+                    <p>Cordialement,</p>
+                    <div>
+                        <p>L'équipe Doctoranytime</p>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+
+</odoo>
