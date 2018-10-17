@@ -2,7 +2,7 @@
 
 {
     'name': 'Monthly Sale Subscription Forecast',
-    'version': '11.1.2',
+    'version': '11.1.3',
     'category': 'Customization',
     'license': 'AGPL-3',
     'author': "VIM IT ",
