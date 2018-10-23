@@ -8,7 +8,6 @@
             <field name="arch" type="xml">
                 <xpath expr="//group[1]" position="after">
                     <group>
-                        <field name="annual_interest" string="test update anual interest"/>
                         <field name="annual_interest" groups="account.group_account_manager"/>
                         <field name="second_interest" groups="account.group_account_manager"/>
                         <field name="amount_limit_second_interest" groups="account.group_account_manager"/>
@@ -28,7 +27,6 @@
                     <field name="amount_limit_second_interest" invisible="1"/>
                     <field name="second_interest" invisible="1"/>
                     <field name="total_interest"/>
-                      <field name="total_interest"/>
 
                 </xpath>
             </field>

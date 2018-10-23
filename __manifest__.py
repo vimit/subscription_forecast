@@ -1,8 +1,8 @@
 # Copyright 2018 VIM IT
 
 {
-    'name': 'Monthly Sale Subscription Forecast',
-    'version': '11.1.3',
+    'name': 'Sale Subscription Forecast',
+    'version': '11.1.4',
     'category': 'Customization',
     'license': 'AGPL-3',
     'author': "VIM IT ",
